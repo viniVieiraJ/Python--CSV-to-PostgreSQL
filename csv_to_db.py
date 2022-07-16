@@ -1,4 +1,6 @@
 import json
+import pandas as pd
+import sys
 import psycopg2 as db
 
 class ConfigDatabase:
@@ -73,4 +75,8 @@ class Moto(Connection):
 
 if __name__ == "__main__":
     moto = Moto()
-    moto.insert("MOTO GENERICA 3", 2000)
+
+    csv_file = pd.read_csv(sys.argv[1], sep=";")
+
+    for row in csv_file.values:
+        moto.insert(row[0], row[1])
