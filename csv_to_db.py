@@ -139,7 +139,7 @@ if __name__ == "__main__":
         
         elif operation == "REPORT":
             sql_query = moto.search()
-            sql_query_dataframe = pd.DataFrame(sql_query, columns=['MODEL', 'PRICE'])
+            sql_query_dataframe = pd.DataFrame(sql_query, columns=['MODEL', 'PRICE']) # Transform sqlQuery into Pandas Dataframe
             sql_query_report_name="BIKES_REPORT_" + datetime.now().strftime("%d-%m-%Y_%H-%M-%S") + ".csv"
 
             sql_query_dataframe.to_csv(sql_query_report_name, index = False, sep=";")
